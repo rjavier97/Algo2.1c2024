@@ -2,7 +2,7 @@ package aed;
 
 class Debugging {
     boolean xor(boolean a, boolean b) {
-        return a || b && !(a && b);
+        return (a || b) && !(a && b);
     }
 
     boolean iguales(int[] xs, int[] ys) {
@@ -15,6 +15,7 @@ class Debugging {
         }
         return res;
     }
+
 
     boolean ordenado(int[] xs) {
         boolean res = true;
