@@ -1,0 +1,51 @@
+Correctitud TP
+**  elevado a 
+
+Pc = (res = recurso) ^ (i=0) ^ (apuestac + apuestas =1) ^ (pagoc>0) ^ (pagos>0) ^ (apuestac>0) ^ (apuestas>=0) ^ (recurso>0)
+
+B = (i < |eventos| )
+
+Qc = (i=|eventos|) ^ res=recurso(apuestac.pagoc)**(#eventos,t) . (apuestas.pagos)**(#eventos,f)
+
+fv = |eventos| - i   funcion decreciente, donde v0 = 
+
+I = 0<= i <= |eventos| ^ res =
+
+recurso . productoria(desde 0 hasta i-1) 
+ ( (if (eventos[0]=true) then (apuestac.pagoc) 
+   else (apuestas.pagos)
+))  
+
+
+
+
+
+Condiciones para que la especificacion sea correcta respecto de su implementacion 
+1º Pc -> I
+2º {I ^ B} S {I}
+3º  (I ^ noB) -> Qc  =si y solo si=  (I ^ i>=|eventos|) -> {Qc}
+4º {I ^ B ^ fv = v0} S {fv < v0}
+5º (I ^ fv<=0) -> noB
+
+
+1º como i=0 entonces es V que i>=0  
+
+   como i=0 en la productoria nos queda (desde 0 hasta 0-1=-1), entonces esta productoria es igual a 1 y termina ahi
+   entonces nos queda recurso . 1 = recurso. Por lo tanto partimos de res=recurso y llegamos a que res=recurso (usando i=0)
+   
+3º Juntando I ^ i>=|eventos| nos queda que i=|eventos| y esto cumple con lo primero de Qc (i=|eventos|)
+    y el res del I quedaria 
+    res = recurso . productoria(desde 0 hasta |eventos|-1) 
+ ( (if (eventos[0]=true) then (apuestac.pagoc) 
+   else (apuestas.pagos)
+))  
+   que es lo mismo que res=recurso(apuestac.pagoc)**(#eventos,t) . (apuestas.pagos)**(#eventos,f)
+   donde (#eventos,t) es la cantidad de veces que sale true y (#eventos,f) la cantidad de veces que sale false,
+   por lo tanto esto es una productoria que depende de si sale true o false, es decir 
+   res = recurso . productoria(desde 0 hasta |eventos|-1) 
+ ( (if (eventos[0]=true) then (apuestac.pagoc) 
+   else (apuestas.pagos) ))   
+   si y solo si 
+   res=recurso(apuestac.pagoc)**(#eventos,t) . (apuestas.pagos)**(#eventos,f)
+   
+
