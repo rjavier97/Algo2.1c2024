@@ -1,33 +1,64 @@
 package aed;
 
 public class Fecha {
+    // ejercicio 1
+    private int _dia;
+    private int _mes;
+
     public Fecha(int dia, int mes) {
-        throw new UnsupportedOperationException("No implementada aun");
+        _dia = dia;
+        _mes = mes;
     }
 
-    public Fecha(Fecha fecha) {
-        throw new UnsupportedOperationException("No implementada aun");
+    public Fecha(Fecha fecha) { 
+        this._dia = fecha._dia;
+        this._mes = fecha._mes;
     }
 
     public Integer dia() {
-        throw new UnsupportedOperationException("No implementada aun");
+        return this._dia; 
     }
 
     public Integer mes() {
-        throw new UnsupportedOperationException("No implementada aun");
-    }
+        return this._mes;
+    }   
 
+    // @Override
+    // public Object clone() {
+    //     try {
+    //         return super.clone();
+    //     } catch (CloneNotSupportedException e) {
+    //         throw new RuntimeException("No se puede clonar la fecha.", e);
+    //     }
+    // }
+    
     public String toString() {
-        throw new UnsupportedOperationException("No implementada aun");
+        return String.valueOf(_dia+"/"+_mes) ;
     }
 
     @Override
     public boolean equals(Object otra) {
-        throw new UnsupportedOperationException("No implementada aun");
+        // otro es null
+        boolean esVacio = (otra == null);
+        // clase es distinta
+        boolean distintoTipo = otra.getClass() != this.getClass();
+        if (esVacio || distintoTipo) {
+            return false;
+        }
+        Fecha otraFecha = (Fecha) otra; // casting.
+        return _dia == otraFecha._dia && _mes == otraFecha._mes ;
     }
-
+        
     public void incrementarDia() {
-        throw new UnsupportedOperationException("No implementada aun");
+        if (_dia < diasEnMes(_mes)) {
+            _dia = _dia + 1;
+        } else if (_mes==12) {
+            _dia = 1;
+            _mes = 1 ;
+        } else {
+            _dia = 1;
+            _mes = _mes +1;
+        }
     }
 
     private int diasEnMes(int mes) {
@@ -39,5 +70,8 @@ public class Fecha {
         };
         return dias[mes - 1];
     }
+
+    // private int _dia;
+    // private int _mes;
 
 }
