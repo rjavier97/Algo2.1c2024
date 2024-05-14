@@ -46,7 +46,7 @@ public class Fecha {
             return false;
         }
         Fecha otraFecha = (Fecha) otra; // casting.
-        return _dia == otraFecha._dia && _mes == otraFecha._mes ;
+        return (_dia==(otraFecha._dia) && _mes==(otraFecha._mes)) ;
     }
         
     public void incrementarDia() {

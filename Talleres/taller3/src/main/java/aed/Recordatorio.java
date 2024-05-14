@@ -31,13 +31,14 @@ public class Recordatorio {
 
     @Override
     public boolean equals(Object otro) {
-        boolean esVacio = otro == null;
+        boolean esVacio = (otro == null);
         boolean distintoTipo = otro.getClass() != this.getClass();
         if (esVacio || distintoTipo){
             return false;
         }
         Recordatorio otroRecordatorio = (Recordatorio) otro; 
-        return (_mensaje==otroRecordatorio._mensaje && _fecha==otroRecordatorio._fecha && _horario==otroRecordatorio._horario);
+        return (_mensaje.equals(otroRecordatorio._mensaje) && _fecha.equals(otroRecordatorio._fecha) && _horario.equals(otroRecordatorio._horario) );
+        // return otroRecordatorio.equals(otro);
     }
 
   
