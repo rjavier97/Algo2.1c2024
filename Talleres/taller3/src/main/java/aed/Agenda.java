@@ -18,7 +18,6 @@ public class Agenda {
     public String toString() {
         StringBuffer buffer = new StringBuffer();
         buffer.append(fechaActual()+"\n=====\n");
-        // buffer.append("\n=====\n");
         
         for (int i=0; i<recordatorios.longitud(); i++){
             if (fechaActual().equals(recordatorios.obtener(i).fecha()))
