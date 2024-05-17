@@ -1,15 +1,11 @@
 package aed;
 import java.util.*;
 
-
 public class ListaEnlazada<T> implements Secuencia<T> {
     // Completar atributos privados
-    // private ListaEnlazada<T> lista = new ListaEnlazada<T>() ;
     private List<T> _lista = new LinkedList<T>();
-    private int tamaño;
 
     // private class Nodo {
-
     // }
 
     public ListaEnlazada() {
@@ -18,7 +14,6 @@ public class ListaEnlazada<T> implements Secuencia<T> {
 
     public int longitud() {
         return this._lista.size();
-  
     }
 
     public void agregarAdelante(T elem) {
@@ -46,7 +41,7 @@ public class ListaEnlazada<T> implements Secuencia<T> {
         for (T elem:this._lista){
             listaCopy.agregarAtras(elem);
         }
-        return  listaCopy;
+        return listaCopy;
     }
 
     public ListaEnlazada(ListaEnlazada<T> lista) {
@@ -66,55 +61,49 @@ public class ListaEnlazada<T> implements Secuencia<T> {
             buffer.append((_lista.get(i)).toString()+", ");
         }
         buffer.append(_lista.get(_lista.size()-1).toString()+"]");
-        // (buffer.deleteCharAt(this._lista.size()-1)).append("]");
         return buffer.toString();
     }
 
     private class ListaIterador implements Iterador<T> {
     	// Completar atributos privados
         private int dedito;
-        private Iterador(){
-            dedito = 0;
-        }
-        private class Nodo {
-            int valor;
-            Nodo sig;
-            Nodo(int v) {valor = v;}
-        }
 
+        public ListaIterador(){
+            this.dedito = 0;
+        }
+       
         public boolean haySiguiente() {
-            return dedito != tamaño ;
+            return dedito < _lista.size() ;
         }
         
         public boolean hayAnterior() {
-	        return dedito != 0;
+	        return dedito > 0;
         }
 
         public T siguiente() {
-            int i = dedito;
-            dedito = dedito + 1;
-            return _lista.get(i);
+            return _lista.get(dedito++); // Esto es lo mismo que hacer ↓↓
+            // int i = dedito;         
+            // dedito = dedito + 1;
+            // return _lista.get(i);  
         }
         
 
         public T anterior() {
-	        int i = dedito;
-            dedito = dedito - 1;
-            return _lista.get(i);
+            return _lista.get(--dedito); // Esto es lo mismo que hacer ↓↓
+            // dedito = dedito - 1;
+            // return _lista.get(dedito); 
         }
     }
 
     public Iterador<T> iterador() {
-        ListaIterador<T> _it;
-        // ListaEnlazada<T> it = new ListaEnlazada<>();
-        for (T elem: this._lista){
-            _it.add(elem);
-        }
-        return _it = it;
-
-        
-
-
+        return new ListaIterador();
     }
 
 }
+
+// public T anterior() {
+//     // if (! hayAnterior()){
+//     //     throw new NoSuchElementException();
+//     // }
+//     return _lista.get(--dedito);
+// }

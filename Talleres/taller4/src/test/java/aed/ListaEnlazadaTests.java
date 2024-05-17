@@ -195,7 +195,7 @@ class ListaEnlazadaTests {
 
         ListaEnlazada<Integer> copiaDeLista = new ListaEnlazada<>(lista);
 
-        // assertEquals(4, copiaDeLista.longitud());
+        assertEquals(4, copiaDeLista.longitud());
         assertEquals(42, copiaDeLista.obtener(0));
         assertEquals(43, copiaDeLista.obtener(1));
         assertEquals(44, copiaDeLista.obtener(2));
