@@ -1,7 +1,6 @@
 package aed;
 
 interface Iterador<T> {
-    
     /**
      * Devuelve true si hay un elemento siguiente en la colección.
      * 
